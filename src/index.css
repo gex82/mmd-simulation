@@ -1,0 +1,221 @@
+/*
+ * Styling for the Merck MMD supply chain simulator.
+ * This file largely mirrors the styles used in the Collins prototype but
+ * removes unused rules and adjusts colours to fit Merck’s palette.  The
+ * background is a dark gradient and UI elements use soft blues and greens
+ * reminiscent of healthcare.
+ */
+
+:root {
+  --bg: #0b0f14;
+  --panel: #121922;
+  --card: #0f1520;
+  --border: #1f2a37;
+  --text: #e5ecf3;
+  --muted: #8aa0b6;
+  --accent: #00e0a4;
+  --accent2: #4fc3f7;
+  --warn: #ffd166;
+  --danger: #ff6b6b;
+  --ok: #8be28b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: var(--text);
+  background: radial-gradient(1200px 700px at 20% -10%, #0f1b2d 0%, var(--bg) 60%);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+h1, h2, h3 {
+  margin: 0 0 8px;
+}
+
+h1 { font-size: 22px; }
+h2 { font-size: 16px; color: #cfe4ff; opacity: 0.85; }
+
+a {
+  color: var(--accent2);
+  text-decoration: none;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: linear-gradient(180deg, #111a26 0%, var(--panel) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  min-width: 180px;
+}
+
+.kpi .num {
+  font-weight: 700;
+  font-size: 18px;
+}
+.kpi .lbl {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+  color: #00141a;
+}
+
+.btn.ghost {
+  background: transparent;
+  border-color: #2a394d;
+}
+
+.input {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: var(--text);
+  width: 100%;
+  font-size: 14px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 8px;
+  border-bottom: 1px dashed #223043;
+}
+
+.bar {
+  height: 10px;
+  background: #132030;
+  border-radius: 8px;
+  border: 1px solid #1d2c3f;
+  overflow: hidden;
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+}
+
+.help {
+  color: #abc0d6;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.caption {
+  color: #9fb3c9;
+  font-size: 12px;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.warn { color: var(--warn); }
+.danger { color: var(--danger); }
+.ok { color: var(--ok); }
+
+.hr {
+  height: 1px;
+  background: #1d2735;
+  margin: 8px 0;
+}
+
+/* -------------------------------------------------------------------
+   Utility classes approximating the Tailwind palette used in App.jsx.
+   These definitions allow the React components to use Tailwind-like
+   classnames without pulling in the full Tailwind CSS library.  Only
+   the colours used in this project are defined here.  You can extend
+   this palette as needed.
+-------------------------------------------------------------------- */
+.bg-slate-800 { background-color: #1e293b; }
+.bg-slate-700 { background-color: #334155; }
+.bg-rose-600 { background-color: #e11d48; }
+.border-slate-700 { border-color: #334155; }
+.text-slate-100 { color: #f1f5f9; }
+.text-slate-200 { color: #e2e8f0; }
+.text-slate-300 { color: #cbd5e1; }
+.text-slate-400 { color: #94a3b8; }
+.text-slate-500 { color: #64748b; }
+.text-amber-400 { color: #fbbf24; }
+.text-emerald-400 { color: #34d399; }
+.text-rose-400 { color: #fb7185; }
+.rounded-lg { border-radius: 8px; }
+.rounded-md { border-radius: 6px; }
+.rounded { border-radius: 4px; }
+.no-print { display: block; }
+@media print { .no-print { display: none !important; } }
+
+pre {
+  background: #0d1420;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 300px;
+}
+
+footer {
+  color: var(--muted);
+  margin: 16px 0 60px;
+}
